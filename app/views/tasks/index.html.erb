@@ -1,0 +1,68 @@
+<h3>Welcome</h3>
+
+<p>Welcome to TaskSnail, and AJAXified Rails App by CodeDiode.io</p>
+
+<p>Learn how to build this app from scratch in 3 lessons</p>
+
+<ul>
+  <li>Devise Gradual Engagement</li>
+  <li>AJAXify your Rails App</li>
+  <li>Working with Zurb Foundation</li>
+</ul>
+
+<% if current_user.soft_user? %>
+
+<h3>Completed Tasks</h3>
+<div class='completed-tasks'>
+  <% @tasks.where(completed: true).each do |task| %>
+  <%= render task %>
+  <% end %>
+</div>
+
+<hr />
+
+<h3>Incomplete Tasks</h3>
+<div class="my-tasks">
+  <% @tasks.where(completed: false).each do |task| %>
+  <%= render task %>
+  <% end %>
+</div>
+
+<% unless current_user.needs_engagement? %>
+<div class="new-task-form"></div>
+<%= link_to "New Task", new_task_path, remote: true, class: "new-task-button button radius" %>
+
+<% else %>
+
+<%= link_to "YOU MUST REGISTER", new_user_registration_path, class: "button radius" %>
+<% end %>
+
+<% else %>
+
+<h3>Completed Tasks</h3>
+<div class='completed-tasks'>
+  <% @tasks.where(completed: true).each do |task| %>
+  <%= render task %>
+  <% end %>
+</div>
+
+<hr />
+
+<h3>Incomplete Tasks</h3>
+<div class="my-tasks">
+  <% @tasks.each do |task| %>
+  <%= render task %>
+  <% end %>
+</div>
+
+<div class="new-task-form"></div>
+<%= link_to "New Task", new_task_path, remote: true, class: "new-task-button button radius" %>
+<% end %>
+
+<% if current_user.soft_user? %>
+<p><%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Login", new_user_session_path %></p>
+<% else %>
+
+<p><%= link_to "Edit Profile", edit_user_registration_path %> or <%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+
+<% end %>

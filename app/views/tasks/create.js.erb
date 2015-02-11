@@ -1,0 +1,13 @@
+<% if current_user.needs_engagement? %>
+
+$('.my-tasks').append('<%= j render partial: "task", locals: {task: @task} %>');
+$('.new-task-button').replaceWith("You Must Register to Create More Tasks |");
+$('form').hide();
+
+<% else %>
+
+$('.my-tasks').append('<%= j render partial: "task", locals: {task: @task} %>');
+$('.new-task-button').show();
+$('form').hide();
+
+<% end %>

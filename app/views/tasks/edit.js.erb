@@ -1,0 +1,2 @@
+$('form').hide();
+$('div#<%= dom_id(@task) %>').find('.panel').append('<%= j render("form") %>');

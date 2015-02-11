@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  completed: false
+  deadline: 2015-02-10 05:27:41
+  user_id: 
+
+two:
+  name: MyString
+  completed: false
+  deadline: 2015-02-10 05:27:41
+  user_id: 

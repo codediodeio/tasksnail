@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <div class="row">
+      <div class="small-12 medium-4 large-6 large-centered medium-centered columns"><div class="logo"><%= image_tag("tasksnail.svg", width: 300) %></div>
+      </div>
+
+    <div class="row">
+      <div class="small-12 medium-8 large-8 large-centered medium-centered columns"><%= yield %></div>
+    </div>
+
+  </body>
+</html>
