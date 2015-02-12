@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :user
+  validates :name, presence: true
 
   def to_param
     "#{id}-#{name.parameterize}"
