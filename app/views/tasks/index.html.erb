@@ -10,7 +10,7 @@
   <li>Working with Zurb Foundation</li>
 </ul>
 
-<% if current_user.soft_user? %>
+<% if @user.soft_user? %>
 
 <h3>Completed Tasks</h3>
 <div class='completed-tasks'>
@@ -23,7 +23,7 @@
 
 <h3>Incomplete Tasks</h3>
 <div class="my-tasks">
-  <% @tasks.where(completed: false).each do |task| %>
+  <% @tasks.where(completed: nil).each do |task| %>
   <%= render task %>
   <% end %>
 </div>
