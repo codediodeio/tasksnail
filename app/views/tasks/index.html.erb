@@ -5,27 +5,31 @@
 <p>Learn how to build this app from scratch in 3 lessons</p>
 
 <ul>
-  <li>Devise Gradual Engagement</li>
-  <li>AJAXify your Rails App</li>
-  <li>Working with Zurb Foundation</li>
+  <li><%= link_to "Devise Gradual Engagement", "http://codediode.io/lessons/364-gradual-engagement-with-rails-and-devise" %></li>
+  <li><%= link_to "AJAXify a Rails App", "http://codediode.io/lessons/1904-ajaxified-one-page-application-with-rails" %></li>
+  <li><%= link_to "Frontend Magic with Zurb Foundation & Rails", "http://codediode.io/lessons/8027-zurb-foundation-rails" %></li>
 </ul>
 
 <% if @user.soft_user? %>
 
 <h3>Completed Tasks</h3>
 <div class='completed-tasks'>
-  <% @tasks.where(completed: true).each do |task| %>
+  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  <% @tasks.completed.each do |task| %>
   <%= render task %>
   <% end %>
+  </ul>
 </div>
 
 <hr />
 
 <h3>Incomplete Tasks</h3>
 <div class="my-tasks">
+  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
   <% @tasks.where(completed: nil).each do |task| %>
   <%= render task %>
   <% end %>
+  </ul>
 </div>
 
 <% unless current_user.needs_engagement? %>
@@ -34,25 +38,30 @@
 
 <% else %>
 
-<%= link_to "YOU MUST REGISTER", new_user_registration_path, class: "button radius" %>
+<h4>Registration Required to Add More Tasks!</h4>
+
 <% end %>
 
 <% else %>
 
 <h3>Completed Tasks</h3>
 <div class='completed-tasks'>
+  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
   <% @tasks.where(completed: true).each do |task| %>
   <%= render task %>
   <% end %>
+</ul>
 </div>
 
 <hr />
 
 <h3>Incomplete Tasks</h3>
 <div class="my-tasks">
-  <% @tasks.each do |task| %>
+  <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  <% @tasks.where(completed: nil).each do |task| %>
   <%= render task %>
   <% end %>
+  </ul>
 </div>
 
 <div class="new-task-form"></div>

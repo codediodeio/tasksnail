@@ -35,6 +35,7 @@ gem 'foundation_rails_helper'
 
 gem 'rails_12factor', group: :production
 gem "passenger"
+gem 'newrelic_rpm'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

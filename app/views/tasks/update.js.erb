@@ -1,1 +1,1 @@
-$('div#<%= dom_id(@task) %>').replaceWith('<%= j render partial: "task", locals: {task: @task} %>');
+$('div#<%= dom_id(@task) %>:first').replaceWith('<%= j render partial: "task", locals: {task: @task} %>');
